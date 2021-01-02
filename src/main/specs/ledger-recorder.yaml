@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Ledger Recorder API
+  version: 0.0.1
+paths:
+  /records:
+    get:
+      summary: Returns a list of records.
+      responses:
+        '200':
+          description: A JSON array of records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Record"
+
+components:
+  schemas:
+    Record:
+      properties:
+        id:
+          type: string
+        category:
+          $ref: "#/components/schemas/Category"
+        name:
+          type: string
+        value:
+          type: number
+          format: decimal
+
+    Category:
+      properties:
+        id:
+          type: string
+        name:
+          type: string

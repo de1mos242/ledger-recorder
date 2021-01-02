@@ -1,1 +1,12 @@
+spring:
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
 
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/r2dbc
+    pool:
+      enabled: true
+      initial-size: 10
+    username: postgres
