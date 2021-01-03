@@ -5,7 +5,7 @@ on:
     branches: ['*']
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,6 +17,10 @@ jobs:
         java-version: '8'
     - name: Run basic tests
       run: ./gradlew test
+
+  tag-version:
+    runs-on: ubuntu-latest
+    steps:
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.17.2
       env:
