@@ -77,6 +77,18 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootBuildImage> {
+    environment = mutableMapOf(
+        "BPL_JVM_HEAD_ROOM" to "2",
+        "BPL_JVM_LOADED_CLASS_COUNT" to "35",
+        "BPL_JVM_THREAD_COUNT" to "10"
+    )
+}
+
+springBoot {
+    buildInfo()
+}
+
 val generatedSourcesDir = "$buildDir/generated/openapi"
 
 openApiGenerate {
