@@ -11,7 +11,7 @@ plugins {
 
 group = "net.de1mos.ledger"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_15
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 configurations {
     compileOnly {
@@ -45,6 +45,7 @@ dependencies {
     api("io.swagger:swagger-annotations:1.6.2")
     api("javax.validation:validation-api")
     api("org.openapitools:jackson-databind-nullable:0.1.0")
+    api("com.fasterxml.jackson.core:jackson-annotations:2.12.0")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
@@ -68,7 +69,7 @@ dependencyManagement {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "15"
+        jvmTarget = "1.8"
     }
 }
 

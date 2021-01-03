@@ -13,8 +13,6 @@ import java.math.BigDecimal
 @RestController
 class RecordsControllerImpl : RecordsApi {
     override fun recordsGet(exchange: ServerWebExchange?): Mono<ResponseEntity<Flux<Record>>> {
-//        return exchange.response.writeWith(Mono.just(Flux.just(Record().id("dd").category(Category().id("c1").name("valenky")).name("super v").value(
-//            BigDecimal.TEN))))
         return Mono.just(
             ResponseEntity.ok(
                 Flux.just(
