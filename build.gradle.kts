@@ -106,4 +106,8 @@ tasks {
     val compileJava by getting {
         dependsOn(openApiGenerate)
     }
+
+    val compileKotlin by getting {
+        dependsOn(openApiGenerate)
+    }
 }
