@@ -57,10 +57,13 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier")
+    testImplementation("org.springframework.cloud:spring-cloud-starter")
+    testImplementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
     testImplementation("org.springframework.kafka:spring-kafka-test")
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:kafka")
     testImplementation("org.testcontainers:r2dbc")
+    testImplementation("com.playtika.testcontainers:embedded-postgresql:1.86")
 }
 
 dependencyManagement {
