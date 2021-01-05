@@ -5,8 +5,15 @@ spring:
         enabled: true
 
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/r2dbc
+    url: r2dbc:postgresql://localhost:5432/ledger-recorder
     pool:
       enabled: true
       initial-size: 10
+    username: postgres
+
+  liquibase:
+    url: jdbc:postgresql://localhost:5432/ledger-recorder
+    user: postgres
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ledger-recorder
     username: postgres

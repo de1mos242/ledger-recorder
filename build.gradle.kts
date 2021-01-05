@@ -38,14 +38,18 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
     implementation("org.liquibase:liquibase-core")
     implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.springframework:spring-jdbc")
     implementation("io.r2dbc:r2dbc-postgresql:0.8.6.RELEASE")
+    implementation("org.postgresql:postgresql:42.2.18")
 
-    api("io.springfox:springfox-swagger2:3.0.0")
-    api("io.springfox:springfox-swagger-ui:3.0.0")
-    api("io.swagger:swagger-annotations:1.6.2")
-    api("javax.validation:validation-api")
-    api("org.openapitools:jackson-databind-nullable:0.1.0")
-    api("com.fasterxml.jackson.core:jackson-annotations:2.12.0")
+
+    implementation("io.springfox:springfox-swagger2:3.0.0")
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
+    implementation("io.springfox:springfox-swagger-ui:3.0.0")
+    implementation("io.swagger:swagger-annotations:1.6.2")
+    implementation("javax.validation:validation-api")
+    implementation("org.openapitools:jackson-databind-nullable:0.1.0")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.12.0")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
@@ -75,14 +79,6 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
     useJUnitPlatform()
-}
-
-tasks.withType<org.springframework.boot.gradle.tasks.bundling.BootBuildImage> {
-    environment = mutableMapOf(
-        "BPL_JVM_HEAD_ROOM" to "2",
-        "BPL_JVM_LOADED_CLASS_COUNT" to "35",
-        "BPL_JVM_THREAD_COUNT" to "10"
-    )
 }
 
 springBoot {

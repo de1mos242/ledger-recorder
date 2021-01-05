@@ -6,6 +6,7 @@ paths:
   /records:
     get:
       summary: Returns a list of records.
+      operationId: getRecords
       responses:
         '200':
           description: A JSON array of records
@@ -16,23 +17,82 @@ paths:
                 items:
                   $ref: "#/components/schemas/Record"
 
+  /categories:
+    get:
+      summary: Get all categories
+      operationId: getCategories
+      parameters:
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 0
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CategoryDto"
+          headers:
+            X-Total:
+              schema:
+                type: integer
+              description: total count
+
+  /categories/{category_id}:
+    put:
+      summary: Create or update category.
+      operationId: putCategory
+      parameters:
+        - in: path
+          name: category_id
+          schema:
+            type: string
+            format: uuid
+          required: true
+          description: category id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategorySaveDto"
+      responses:
+        '204':
+          description: Ok
+
 components:
   schemas:
     Record:
       properties:
         id:
           type: string
+          format: uuid
         category:
-          $ref: "#/components/schemas/Category"
+          $ref: "#/components/schemas/CategoryDto"
         name:
           type: string
         value:
           type: number
           format: decimal
 
-    Category:
+    CategoryDto:
       properties:
         id:
           type: string
+          format: uuid
+        name:
+          type: string
+
+    CategorySaveDto:
+      properties:
         name:
           type: string
