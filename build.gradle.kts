@@ -13,6 +13,10 @@ group = "net.de1mos.ledger"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
+if (project.hasProperty("projVersion")) {
+    version = project.properties["projVersion"]!!
+}
+
 configurations {
     compileOnly {
         extendsFrom(configurations.annotationProcessor.get())
@@ -101,6 +105,7 @@ openApiGenerate {
     configOptions.put("reactive", "true")
     configOptions.put("interfaceOnly", "true")
     configOptions.put("skipDefaultInterface", "true")
+    configOptions.put("useTags", "true")
 }
 
 sourceSets {

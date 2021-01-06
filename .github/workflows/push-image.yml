@@ -10,11 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build image
-      run: ./gradlew bootBuildImage --imageName=de1m0s/ledger-recorder
-
     - name: Set env
       run: echo "RELEASE_VERSION=${GITHUB_REF:11}" >> $GITHUB_ENV
+
+    - name: Build image
+      run: ./gradlew bootBuildImage -PprojVersion=${{ env.RELEASE_VERSION }} --imageName=de1m0s/ledger-recorder
 
     - name: login to docker hub
       env:

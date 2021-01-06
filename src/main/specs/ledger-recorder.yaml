@@ -3,10 +3,12 @@ info:
   title: Ledger Recorder API
   version: 0.0.1
 paths:
-  /records:
+  /api/recorder/records:
     get:
       summary: Returns a list of records.
       operationId: getRecords
+      tags:
+        - records
       responses:
         '200':
           description: A JSON array of records
@@ -17,10 +19,12 @@ paths:
                 items:
                   $ref: "#/components/schemas/Record"
 
-  /categories:
+  /api/recorder/categories:
     get:
       summary: Get all categories
       operationId: getCategories
+      tags:
+        - categories
       parameters:
         - in: query
           name: page
@@ -47,10 +51,12 @@ paths:
                 type: integer
               description: total count
 
-  /categories/{category_id}:
+  /api/recorder/categories/{category_id}:
     put:
       summary: Create or update category.
       operationId: putCategory
+      tags:
+        - categories
       parameters:
         - in: path
           name: category_id
