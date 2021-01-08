@@ -10,5 +10,5 @@ import java.util.*
 interface CategoryRepository : ReactiveSortingRepository<Category, Long> {
     fun findCategoryByExternalUUID(externalUUID: UUID): Mono<Category>
 
-    fun findAllByNameStartsWithOrderByName(name: String, pageable: Pageable): Flux<Category>
+    fun findAllByUserIdOrderByName(userId: String, pageable: Pageable): Flux<Category>
 }

@@ -5,15 +5,22 @@ spring:
         enabled: true
 
   r2dbc:
-    url: r2dbc:postgresql://localhost:5432/ledger-recorder
+    url: r2dbc:postgresql://localhost:15432/ledger-recorder
     pool:
       enabled: true
       initial-size: 10
     username: postgres
 
   liquibase:
-    url: jdbc:postgresql://localhost:5432/ledger-recorder
+    url: jdbc:postgresql://localhost:15432/ledger-recorder
     user: postgres
   datasource:
-    url: jdbc:postgresql://localhost:5432/ledger-recorder
+    url: jdbc:postgresql://localhost:15432/ledger-recorder
     username: postgres
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9494/auth/realms/t1
+          jwk-set-uri: http://localhost:9494/auth/realms/t1/protocol/openid-connect/certs

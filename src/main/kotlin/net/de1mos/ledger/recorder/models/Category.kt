@@ -9,5 +9,6 @@ import java.util.*
 data class Category(
     @Column("name") var name: String,
     @Column("external_uuid") var externalUUID: UUID,
+    @Column("user_id") var userId: String,
     @Id @Column("id") var id: Long? = null
 )

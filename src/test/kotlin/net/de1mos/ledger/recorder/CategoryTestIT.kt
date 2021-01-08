@@ -6,7 +6,12 @@ import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.hasSize
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
+import org.springframework.http.MediaType
+import org.springframework.security.test.context.support.WithMockUser
+import org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockJwt
 import org.springframework.web.reactive.function.BodyInserters
+import java.security.Principal
 import java.util.*
 
 class CategoryTestIT : RecorderApplicationTests() {
@@ -15,7 +20,10 @@ class CategoryTestIT : RecorderApplicationTests() {
     fun testCreateAndRead() {
         val categoryName = "vvv"
         val categoryUUID = UUID.randomUUID()
-        webTestClient.put().uri("$CATEGORY_URI/$categoryUUID")
+        webTestClient
+            .mutateWith(mockJwt())
+            .put().uri("$categoryUrl/$categoryUUID")
+            .contentType(MediaType.APPLICATION_JSON)
             .body(BodyInserters.fromValue(CategorySaveDto().name(categoryName)))
             .exchange()
             .expectStatus().isNoContent
@@ -23,7 +31,10 @@ class CategoryTestIT : RecorderApplicationTests() {
             .responseBody
             .blockFirst()
 
-        val categories = webTestClient.get().uri(CATEGORY_URI).exchange()
+        val categories = webTestClient
+            .mutateWith(mockJwt())
+            .get().uri(categoryUrl)
+            .exchange()
             .expectStatus().isOk
             .expectHeader().valueEquals("X-Total", "1")
             .returnResult(CategoryDto::class.java)

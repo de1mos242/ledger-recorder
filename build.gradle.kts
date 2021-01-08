@@ -45,6 +45,8 @@ dependencies {
     implementation("org.springframework:spring-jdbc")
     implementation("io.r2dbc:r2dbc-postgresql:0.8.6.RELEASE")
     implementation("org.postgresql:postgresql:42.2.18")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation("org.springframework.security:spring-security-oauth2-jose")
 
 
     implementation("io.springfox:springfox-swagger2:3.0.0")
@@ -58,6 +60,7 @@ dependencies {
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.security:spring-security-test")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner")
     testImplementation("org.springframework.cloud:spring-cloud-starter-contract-verifier")

@@ -2,6 +2,10 @@ openapi: 3.0.0
 info:
   title: Ledger Recorder API
   version: 0.0.1
+
+security:
+  - bearerAuth: []
+
 paths:
   /api/recorder/records:
     get:
@@ -102,3 +106,9 @@ components:
       properties:
         name:
           type: string
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
