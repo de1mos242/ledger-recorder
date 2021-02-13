@@ -5,20 +5,17 @@ import net.de1mos.ledger.recorder.api.models.CategorySaveDto
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.hasSize
-import org.junit.Ignore
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.mockito.Mockito
 import org.springframework.http.MediaType
-import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.security.test.web.reactive.server.SecurityMockServerConfigurers.mockJwt
 import org.springframework.web.reactive.function.BodyInserters
-import java.security.Principal
 import java.util.*
 
 class CategoryTestIT : RecorderApplicationTests() {
 
     @Test
-    @Ignore
+    @Disabled
     fun testCreateAndRead() {
         val categoryName = "vvv"
         val categoryUUID = UUID.randomUUID()
