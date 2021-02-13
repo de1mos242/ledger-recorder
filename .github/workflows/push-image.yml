@@ -25,7 +25,7 @@ jobs:
       run: docker tag de1m0s/ledger-recorder de1m0s/ledger-recorder:${{ env.RELEASE_VERSION }}
 
     - name: Publish image to dockerhub
-      run: docker push de1m0s/ledger-recorder
+      run: docker push de1m0s/ledger-recorder:${{ env.RELEASE_VERSION }}
 
   notify_deploy:
     runs-on: ubuntu-latest
