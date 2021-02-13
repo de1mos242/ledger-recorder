@@ -5,6 +5,7 @@ import net.de1mos.ledger.recorder.api.models.CategorySaveDto
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.Matchers.hasSize
+import org.junit.Ignore
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.springframework.http.MediaType
@@ -17,6 +18,7 @@ import java.util.*
 class CategoryTestIT : RecorderApplicationTests() {
 
     @Test
+    @Ignore
     fun testCreateAndRead() {
         val categoryName = "vvv"
         val categoryUUID = UUID.randomUUID()
