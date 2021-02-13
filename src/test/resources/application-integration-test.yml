@@ -20,3 +20,12 @@ spring:
     url: jdbc:postgresql://${embedded.postgresql.host}:${embedded.postgresql.port}/${embedded.postgresql.schema}
     username: ${embedded.postgresql.user}
     password: ${embedded.postgresql.password}
+
+  kafka:
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.BytesDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+    bootstrap-servers: ${embedded.kafka.brokerList}

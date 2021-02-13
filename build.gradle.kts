@@ -72,6 +72,7 @@ dependencies {
     testImplementation("org.testcontainers:kafka")
     testImplementation("org.testcontainers:r2dbc")
     testImplementation("com.playtika.testcontainers:embedded-postgresql:1.86")
+    testImplementation("com.playtika.testcontainers:embedded-kafka:2.0.3")
 }
 
 dependencyManagement {
